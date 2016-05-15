@@ -1,0 +1,72 @@
+<GrabadorUi>:
+    orientation: "vertical"
+    padding: 30
+    spacing: 20
+    Etiqueta:
+        text: "Grabador"
+        halign: "center"
+        font_size: 30
+    ToggleButton:
+        text: "grabar"
+        id: gabartoggle
+        size_hint_y: None
+        height: 60
+        on_state: root.toggle_grabar(*args)
+    #Etiqueta:
+        #text:"Buen intento Judas, solo eliminaste la copia de trabajo. Desactive el cambio de input y output para que no juegues"
+        #font_size: 25
+    BoxLayout:
+        orientation: "horizontal"
+        BoxLayout:
+            orientation: "vertical"
+            Etiqueta:
+                text: "Input"
+                font_size: 20
+            Spinner:
+                size_hint_y: None
+                height: 60
+                id:inputs
+                on_text: root.change_output(*args)
+        BoxLayout:
+            orientation: "vertical"
+            Etiqueta:
+                text: "Output"
+                font_size: 20
+            Spinner:
+                size_hint_y: None
+                height: 60
+                id:outputs
+                on_text: root.change_input(*args)
+    GridLayout:
+        cols:2
+        BoxLayout:
+            orientation: "vertical"
+            Etiqueta:
+                text: "Rate"
+            DatosInput:
+                id: rate
+                text: "48000"
+                input_filter: "int"
+                on_text: root.change_rate(*args)
+        Switch:
+        BoxLayout:
+            orientation: "vertical"
+            Etiqueta:
+                text: "Channels"
+            DatosInput:
+                id: channels
+                input_filter: "int"
+                text: "2"
+                on_text: root.change_channels(*args)
+
+        Switch:
+        BoxLayout:
+            orientation: "vertical"
+            Etiqueta:
+                text: "Format"
+            DatosInput:
+                id: format
+                text: "16"
+                input_filter: "int"
+                on_text: root.change_format(*args)
+        Switch:

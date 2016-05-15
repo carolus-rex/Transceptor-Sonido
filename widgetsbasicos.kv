@@ -1,0 +1,136 @@
+
+#:set color_texto (230/255.0, 32/255.0, 136/255.0, 1)
+#:set color_1 (232/255.0, 215/255.0, 162/255.0, 1)
+#:set color_2 (255/255.0, 216/255.0, 100/255.0, 1)
+#:set color_3 (237/255.0, 177/255.0, 52/255.0, 1)
+
+<Boton>:
+    font_size: sp(20)
+    #color: 232/255, 215/255, 162/255, 1
+    #color: 245/255, 93/255, 73/255, 1
+    #color: 217/255, 227 /255, 125/255, 1
+    color: color_texto
+    #color: 230/255, 32/255, 136/255, 1
+    bold: True
+    background_normal:''  # Elimina la imagen background, permite
+                          # asginar color especifico
+    #background_color: 245/255, 93/255, 73/255, 1
+    #background_color: 45/255, 138/255, 131/255, 1
+    background_color: color_3
+    #size_hint: 0.5, 1
+    size_hint_y: None
+    height: self.texture_size[1] + self.border[0] / 2.5
+    pos_hint: {'center_x': 0.5}
+
+
+<Etiqueta>:
+    fondo:1,1,1,0
+    fondo_pos:self.pos
+    fondo_size:self.size
+    canvas.before:
+        Color:
+            rgba: self.fondo
+        Rectangle:
+            pos: self.fondo_pos
+            size: self.fondo_size
+    #color: 245/255, 93/255, 73/255, 1
+    #color: 222/255, 154 /255, 28/255, 1
+    color: color_texto
+    #color: 225/255, 32/255, 232/255, 1
+
+    font_size: sp(15)
+    #text_size:self.size  #Hace que el texto sea del
+                         #mismo tamano que el Label
+                         #Hace funcionar el halign
+    #size_hint_x: 0.5
+    size_hint_y: None
+    text_size: self.width, None
+    height: self.texture_size[1] + 2 * self.padding[0]
+    halign: 'left'
+    bold: True
+
+
+<EtiquetaMensaje>:
+    color: self.color
+
+
+<DatosInput>:
+    font_size: sp(12)
+    multiline: False
+    write_tab: False
+    size_hint_y: None
+    height: self.line_height + sp(12)
+
+
+<ExaminarInput>:
+
+
+<NotificarInput>:
+    canvas.before:
+        Color:
+            rgba: 1, 1, 0, 1
+        Rectangle:
+            pos:self.pos
+            size:self.size
+    #orientation: 'vertical'
+    cols: 1
+    texto_aceptado: input.texto_aceptado
+    text: input.text
+    password:
+    allow_copy:
+    use_bubble:
+    hint_text:
+    longitud_max:
+    input_filter:
+    EtiquetaMensaje:
+        id: etiqueta
+    ExaminarInput:
+        id: input
+        tiempo_analisis: root.tiempo_analisis
+        password: root.password
+        allow_copy: root.allow_copy
+        use_bubble: root.use_bubble
+        on_focus:root.on_textinput_focus()
+        on_text: root.on_textinput_text()
+        hint_text: root.hint_text
+        input_filter: root.input_filter
+
+
+<VistaScroll>:
+    gpadding:
+    gspacing:
+    color_fondo:
+    do_scroll_x: False
+    do_scroll_y: True
+    canvas.before:
+        Color:
+            rgba: self.color_fondo
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    GridLayout:
+        id:layout
+        #orientation: 'vertical'
+        cols: 1
+        padding: dp(20)
+        spacing: dp(20)
+        size_hint_y: None
+
+
+<GridLayoutAdaptivo>:
+    size_hint_y: None
+
+
+<EtiquetaPopup>:
+    #size_hint_y: None
+    #text_size: self.width, None
+    #height: self.texture_size[1] + 2 * self.padding[0]
+    text_size: self.size
+    pos_hint: {'center_y': 0.5}
+    halign: "center"
+    valign: "middle"
+
+
+<Espacio>:
+    size_hint_y: None
+    height:dp(self.px)
